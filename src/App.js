@@ -4,6 +4,7 @@ import './style/scss/index.scss'
 import Header from './components/common/Header'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainRoute from './route/MainRoute'
+import Footer from './components/common/Footer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           </Routes>
         </div>
       </Container>
+      <Footer />
     </BrowserRouter>
   )
 }

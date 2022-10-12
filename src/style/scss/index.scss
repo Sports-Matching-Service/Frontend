@@ -106,3 +106,48 @@ header {
     height: auto;
   }
 }
+
+.filter_col_wrap {
+  justify-content: flex-end;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  background-color: rgb(64, 64, 64);
+  padding: 40px 0px;
+
+  .footer_title_wrap {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      font-family: 'OKDDUNG';
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    p {
+      margin-bottom: 0 !important;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s all;
+    }
+
+    p:hover {
+      color: #cccccc;
+    }
+  }
+
+  .footer_notice_wrap {
+    margin-top: 20px;
+
+    p {
+      color: white;
+    }
+  }
+}
