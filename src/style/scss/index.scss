@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OKDDUNG';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/OKDDUNG.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'GmarketSansMedium';
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+
+  .logo_wrap {
+    h3 {
+      font-family: 'OKDDUNG';
+      font-size: 1.5rem;
+    }
+  }
+
+  .search_infor {
+    display: flex;
+
+    .search_wrap {
+      margin-right: 20px;
+
+      .input_wrap {
+        border: 1px solid rgb(204, 204, 204);
+        padding: 5px 10px;
+        border-radius: 15px;
+        position: relative;
+
+        input {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
+        input:focus {
+          outline: 0;
+        }
+
+        svg {
+          position: absolute;
+          top: 6px;
+          right: 10px;
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    .infor_wrap {
+      .infor_circle {
+        height: 100%;
+        width: 36px;
+        border: 1px solid #cccccc;
+        border-radius: 50%;
+        position: relative;
+
+        svg {
+          font-size: 1.6rem;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+.carousel_row {
+  justify-content: center;
+
+  .temp_casousel_area {
+    width: 100%;
+    height: 400px;
+    background-color: #cccccc;
+    position: absolute;
+    left: 0;
+    z-index: -100;
+  }
+}
+
+.first_swiper,
+.second_swiper,
+.third_swiper {
+  height: 400px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.filter_col_wrap {
+  justify-content: flex-end;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  background-color: rgb(64, 64, 64);
+  padding: 40px 0px;
+
+  .footer_title_wrap {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      font-family: 'OKDDUNG';
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    p {
+      margin-bottom: 0 !important;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s all;
+    }
+
+    p:hover {
+      color: #cccccc;
+    }
+  }
+
+  .footer_notice_wrap {
+    margin-top: 20px;
+
+    p {
+      color: white;
+    }
+  }
+}
