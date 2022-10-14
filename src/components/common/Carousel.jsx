@@ -1,16 +1,16 @@
-import React from 'react'
-import { Col, Row } from 'react-bootstrap'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper'
-import temp_image from '../../style/image/temp_image.jpg'
-import temp_image2 from '../../style/image/temp_image2.jpg'
-import temp_image3 from '../../style/image/temp_image3.jpg'
-import 'swiper/scss'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import React from "react";
+import { Col, Row } from "react-bootstrap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
+import temp_image from "../../style/image/temp_image.jpg";
+import temp_image2 from "../../style/image/temp_image2.jpg";
+import temp_image3 from "../../style/image/temp_image3.jpg";
+import "swiper/scss";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const Carousel = () => {
-  SwiperCore.use([Navigation, Pagination, Autoplay])
+  SwiperCore.use([Navigation, Pagination, Autoplay]);
 
   return (
     <Row className="carousel_row">
@@ -35,7 +35,7 @@ const Carousel = () => {
         </Swiper>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;
