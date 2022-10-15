@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Slider from "../common/Slider";
+import Filter from "../common/Filter";
 
 const Main = () => {
   return (
@@ -9,7 +10,7 @@ const Main = () => {
         <Slider />
       </Col>
       <Col sm={12} md={5} style={{ backgroundColor: "rgb(250,240,230)" }}>
-        필터가 들어갈 영역
+        <Filter />
       </Col>
       <Col sm={12} md={12} style={{ backgroundColor: "rgb(250,240,230)" }}>
         리스트가 들어갈 영역
