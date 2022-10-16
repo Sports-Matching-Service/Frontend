@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Slider from "../common/Slider";
 import Filter from "../common/Filter";
+import MatchList from "../common/MatchList";
 
 const Main = () => {
   return (
@@ -13,7 +14,7 @@ const Main = () => {
         <Filter />
       </Col>
       <Col sm={12} md={12} style={{ backgroundColor: "rgb(250,240,230)" }}>
-        리스트가 들어갈 영역
+        <MatchList />
       </Col>
     </Row>
   );
