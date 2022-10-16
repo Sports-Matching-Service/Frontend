@@ -11,11 +11,13 @@ const SelectContainer = styled.div`
   display: flex;
   width: 30%;
   flex-direction: column;
+  position: relative;
 `;
 
 const SelectBar = styled.div`
   background: white;
   border-radius: 8px;
+  border: 1px solid black;
   margin-bottom: 8px;
   color: black;
   padding: 12px 18px;
@@ -39,6 +41,9 @@ const SelectList = styled.div`
   border-radius: 8px;
   overflow: hidden;
   overflow-y: scroll;
+  border: 1px solid black;
+  position: absolute;
+  top: 65px;
 
   order: 1;
 
@@ -49,12 +54,12 @@ const SelectList = styled.div`
 
   &::-webkit-scrollbar {
     width: 8px;
-    background: #0d141f;
+    background: white;
     border-radius: 0 8px 8px 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #525861;
+    background: yellow;
     border-radius: 0 8px 8px 0;
   } 
 `;
@@ -72,7 +77,7 @@ const Item = styled.div`
   }
 
   &:hover {
-    background: #414b57;
+    background: yellow;
   }
 `;
 
