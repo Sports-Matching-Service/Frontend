@@ -1,0 +1,30 @@
+.bg_wrap{
+    width: 100vw;
+    position: relative;
+    height: calc(100vh - 100px);
+    margin-left: -50vw;
+    left: 50%;
+    background-image: url("../image/good_sports.png");
+    background-size: cover;
+}
+
+.signup_wrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .signup_box {
+        width: 400px;
+        height: auto;
+        background-color: white;
+        border-radius: 0.375rem;
+        border: 1px solid black;
+        padding: 30px;
+    }
+}

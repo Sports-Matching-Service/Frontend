@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainRoute from './route/MainRoute'
 import Footer from './components/common/Footer'
 import LoginModal from './components/common/LoginModal'
+import SignUpRoute from './route/SignUpRoute'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<MainRoute />} />
+            <Route path="/signup" element={<SignUpRoute />} />
           </Routes>
         </div>
       </Container>

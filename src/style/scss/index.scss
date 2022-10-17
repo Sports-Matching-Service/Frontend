@@ -20,6 +20,10 @@
   font-family: 'GmarketSansMedium';
 }
 
+body {
+  overflow-x: hidden;
+}
+
 header {
   display: flex;
   justify-content: space-between;
