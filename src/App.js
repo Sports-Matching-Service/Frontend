@@ -5,6 +5,7 @@ import Header from './components/common/Header'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainRoute from './route/MainRoute'
 import Footer from './components/common/Footer'
+import LoginModal from './components/common/LoginModal'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </div>
       </Container>
       <Footer />
+      <LoginModal />
     </BrowserRouter>
   )
 }

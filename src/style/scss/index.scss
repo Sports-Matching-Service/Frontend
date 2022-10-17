@@ -30,6 +30,7 @@ header {
     h3 {
       font-family: 'OKDDUNG';
       font-size: 1.5rem;
+      cursor: pointer;
     }
   }
 
@@ -60,6 +61,7 @@ header {
           top: 6px;
           right: 10px;
           font-size: 1.3rem;
+          cursor: pointer;
         }
       }
     }
@@ -71,6 +73,7 @@ header {
         border: 1px solid #cccccc;
         border-radius: 50%;
         position: relative;
+        cursor: pointer;
 
         svg {
           font-size: 1.6rem;
@@ -148,6 +151,79 @@ footer {
 
     p {
       color: white;
+    }
+  }
+}
+
+.modal-header {
+  border-bottom : none !important;
+}
+
+.modal-body {
+  h4:nth-child(1) {
+    font-family: 'OKDDUNG';
+    text-align: center;
+  }
+
+  h4:nth-child(2) {
+    text-align: center;
+    margin: 50px 0;
+  }
+}
+
+.modal-body {
+  form {
+    padding: 0 50px;
+
+    hr {
+      margin-top: 25px;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.modal_btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    width: 46%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+  }
+}
+
+.social_div {
+  padding: 0 50px;
+
+  p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal_social_wrap {
+    width: 100%;
+
+    button {
+      width: 100%;
+      height: auto;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+    }
+
+    button:nth-child(2){
+      margin-bottom: 40px;
     }
   }
 }
