@@ -16,6 +16,7 @@ const SignUp = () => {
             <div className="bg_wrap"></div>
             <div className="signup_wrap">
                 <div className="signup_box">
+                    <h4>회원가입</h4>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-4">
                             <label htmlFor="email" className="form-label">이름</label>
@@ -51,7 +52,7 @@ const SignUp = () => {
                         </div>
                         <div className="mb-4">
                             <label htmlFor="email" className="form-label">이메일 인증</label>
-                            <div class="input-group">
+                            <div className="input-group">
                                 <input
                                   id="email_check"
                                   className="form-control"
@@ -62,7 +63,7 @@ const SignUp = () => {
                                     required : "이메일 인증은 필수 입력입니다."
                                   })}
                                 />
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호 받기</button>
+                                <button className="btn btn-outline-secondary" type="button" id="button-addon2">인증번호 받기</button>
                             </div>
                             {errors.email_check && <small role="alert">{errors.email_check.message}</small>}
                         </div>
@@ -102,10 +103,18 @@ const SignUp = () => {
                             />
                             {errors.password_check && <small role="alert">{errors.password_check.message}</small>}
                         </div>
-                        <div className="mb-3 modal_btn_wrap">
+                        <div className="mb-2">
+                          <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                            <label className="form-check-label collect_infor" htmlFor="flexCheckDefault">
+                              개인정보 수집 및 이용 동의
+                            </label>
+                          </div>
+                        </div>
+                        <hr className="mb-4" />
+                        <div className="mb-2 signup_btn_wrap">
                             <button className="btn btn-success" type="submit" disabled={isSubmitting}>회원가입하기</button>
                         </div>
-                        <hr />
                     </form>
                 </div>
             </div>

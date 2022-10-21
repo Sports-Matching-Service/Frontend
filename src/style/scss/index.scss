@@ -190,13 +190,13 @@ footer {
   }
 }
 
-.modal_btn_wrap {
+.signup_btn_wrap {
   width: 100%;
   display: flex;
   justify-content: space-between;
 
   button {
-    width: 46%;
+    width: 100%;
     border: none;
     display: flex;
     justify-content: center;
@@ -230,4 +230,51 @@ footer {
       margin-bottom: 40px;
     }
   }
+}
+
+.match_regis_wrap {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  border: 3px solid rgb(26, 188, 156);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 0 5px -2px!important;
+  background-color: white;
+
+  svg {
+    color: rgb(26, 188, 156);
+    width: 70%;
+    height: 70%;
+  }
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
 }

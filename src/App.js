@@ -7,6 +7,7 @@ import MainRoute from './route/MainRoute'
 import Footer from './components/common/Footer'
 import LoginModal from './components/common/LoginModal'
 import SignUpRoute from './route/SignUpRoute'
+import MatchRegisRoute from './route/MatchRegisRoute'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainRoute />} />
             <Route path="/signup" element={<SignUpRoute />} />
+            <Route path="/matchregis" element={<MatchRegisRoute />} />
           </Routes>
         </div>
       </Container>

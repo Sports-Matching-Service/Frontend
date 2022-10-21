@@ -8,7 +8,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 const LoginModal = () => {
 
     const { modal_state } = useSelector(state => state.loginModalReducer);
-    const { close_modal } = useClickEvent();
+    const { close_modal, move_page } = useClickEvent();
     const { register, handleSubmit, formState: { isSubmitting, isDirty, errors } } = useForm();
 
     const onSubmit = async (data) => {
@@ -64,7 +64,10 @@ const LoginModal = () => {
                         </div>
                         <div className="mb-3 modal_btn_wrap">
                             <button className="btn btn-success" type="submit" disabled={isSubmitting}>로그인</button>
-                            <button className="btn btn-success">회원가입</button>
+                            <button className="btn btn-success" onClick={()=>{
+                                close_modal()
+                                move_page('signup') 
+                            }}>회원가입</button>
                         </div>
                         <hr />
                     </form>

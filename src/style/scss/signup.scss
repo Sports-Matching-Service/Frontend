@@ -24,7 +24,35 @@
         height: auto;
         background-color: white;
         border-radius: 0.375rem;
-        border: 1px solid black;
         padding: 30px;
     }
 }
+
+.modal_btn_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  
+    button {
+      width: 46%;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+    }
+  }
+
+.signup_box {
+
+    h4:nth-child(1) {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.5rem;
+    }
+  }
+  
+  .collect_infor {
+    margin-top: 2px;
+  }
+  

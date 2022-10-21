@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -7,7 +8,9 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className="footer_title_wrap" sm={12} md={8}>
-            <h4>Sports-Matching-Service</h4>
+            <Link to="/">
+              <h4>Sports-Matching-Service</h4>
+            </Link>
             <p>서비스 소개</p>
             <p>공지사항</p>
             <p>자주 묻는 질문</p>
