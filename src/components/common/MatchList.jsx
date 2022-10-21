@@ -1,94 +1,369 @@
 import styled from "styled-components";
+import { useState, useEffect, useCallback } from "react";
+import { useInView } from "react-intersection-observer";
+import axios from "axios";
 
 const MATCH_DATA = [
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "# 남성",
-    way: "# 3파전",
-    number: "# 6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "마감 임박",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "마감",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
-  {
-    time: "10:00 ~ 12:00",
-    stadium: "안양시 양천동 FC 풋볼장",
-    gender: "남성",
-    way: "3파전",
-    number: "6 vs 6",
-    status: "모집 중",
-  },
+  [
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "# 남성",
+      way: "# 3파전",
+      number: "# 6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감 임박",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "10:00 ~ 12:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+  ],
+  [
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "# 남성",
+      way: "# 3파전",
+      number: "# 6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감 임박",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+  ],
+  [
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "# 남성",
+      way: "# 3파전",
+      number: "# 6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감 임박",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+  ],
+  [
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "# 남성",
+      way: "# 3파전",
+      number: "# 6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감 임박",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "마감",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+    {
+      time: "18:00 ~ 20:00",
+      stadium: "안양시 양천동 FC 풋볼장",
+      gender: "남성",
+      way: "3파전",
+      number: "6 vs 6",
+      status: "모집 중",
+    },
+  ],
 ];
 
 const ListContainer = styled.div`
@@ -117,8 +392,10 @@ const ListStadium = styled.div`
 const ListIntroduce = styled.div`
   width: 25%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  & span:first-child {
+    margin-right: 30px;
+  }
 `;
 
 const ListStatus = styled.div`
@@ -142,16 +419,57 @@ const ListStatusBtn = styled.div`
 `;
 
 function MatchList() {
+  const [matchList, setMatchList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const [lastRef, lastInView] = useInView();
+
+  // 서버에서 아이템을 가지고 오는 함수
+  const getMatchList = useCallback(async () => {
+    setLoading(true);
+    // by 민형, API를 통해 데이터를 가지고 올 경우_221021
+    // await axios.get(`APIURL/matchlist/page=${page}`).then((res) => {
+    //   setMatchList((prev) => {
+    //     return prev.length < page * 11
+    //       ? [...prev, ...MATCH_DATA[page - 1]]
+    //       : [...prev];
+    //   });
+    // })
+    setMatchList((prev) => {
+      return prev.length < page * 11
+        ? [...prev, ...MATCH_DATA[page - 1]]
+        : [...prev];
+    });
+    setLoading(false);
+  }, [page]);
+
+  // `getMatchList` 가 바뀔 때 마다 함수 실행
+  useEffect(() => {
+    getMatchList();
+  }, [getMatchList]);
+
+  useEffect(() => {
+    // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
+    if (lastInView && !loading) {
+      if (page + 1 > MATCH_DATA.length) {
+        return;
+      }
+      setPage((prevState) => prevState + 1);
+    }
+  }, [lastInView, loading]);
+
   return (
     <>
-      {MATCH_DATA.map((match, idx) => (
-        // 화면 사이즈 줄이면 깨짐
-        <ListContainer key={idx}>
+      {matchList.map((match, idx) => (
+        <ListContainer
+          key={idx}
+          ref={matchList.length - 1 === idx ? lastRef : undefined}
+        >
           <ListTime>{match.time}</ListTime>
           <ListStadium>{match.stadium}</ListStadium>
           <ListIntroduce>
             <span>{match.gender}</span>
-            <span>{match.way}</span>
             <span>{match.number}</span>
           </ListIntroduce>
           <ListStatus>
