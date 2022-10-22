@@ -1,13 +1,14 @@
-import { Container } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './style/scss/index.scss'
-import Header from './components/common/Header'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import MainRoute from './route/MainRoute'
-import Footer from './components/common/Footer'
-import LoginModal from './components/common/LoginModal'
-import SignUpRoute from './route/SignUpRoute'
-import MatchRegisRoute from './route/MatchRegisRoute'
+import { Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./style/scss/index.scss";
+import Header from "./components/common/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainRoute from "./route/MainRoute";
+import Footer from "./components/common/Footer";
+import LoginModal from "./components/common/LoginModal";
+import SignUpRoute from "./route/SignUpRoute";
+import MatchRegisRoute from "./route/MatchRegisRoute";
+import MyPageRoute from "./route/MyPageRoute";
 
 function App() {
   return (
@@ -19,13 +20,14 @@ function App() {
             <Route path="/" element={<MainRoute />} />
             <Route path="/signup" element={<SignUpRoute />} />
             <Route path="/matchregis" element={<MatchRegisRoute />} />
+            <Route path="/mypage" element={<MyPageRoute />} />
           </Routes>
         </div>
       </Container>
       <Footer />
       <LoginModal />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
