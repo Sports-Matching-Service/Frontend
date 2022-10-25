@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { swal_class } from "../js/sweetAlert";
 import { set_login_modal, set_adress_modal } from "../redux/actions/modalAction";
 
 
@@ -12,6 +13,7 @@ export const useClickEvent = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    let swal_run;
 
     const open_modal = () => {
         dispatch(set_login_modal(true));
@@ -33,9 +35,20 @@ export const useClickEvent = () => {
         navigate(`/${param}`);
     }
 
-    const on_post = (data) => {
-        console.log('진입');
+    const back_page = () => {
+        navigate(-1);
     }
 
-    return { open_modal, close_modal, move_page, close_address, open_address }
+    const regis_click = async() => {
+        swal_run = new swal_class('info', '등록하시겠습니까?', '경기를 등록하시겠습니까?');
+        const swal_result = await swal_run.confirm_alert();
+
+        if(swal_result){
+            console.log('경기 등록 api...');
+        }
+    }
+
+    
+
+    return { open_modal, close_modal, move_page, close_address, open_address, regis_click, back_page }
 }

@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const MatchRegisView = () => {
 
-    const { open_address } = useClickEvent();
+    const { open_address, regis_click, back_page } = useClickEvent();
     const { address_data } = useSelector(state => state.AddressReducer);
 
     return(
@@ -87,6 +87,16 @@ const MatchRegisView = () => {
                 <Col sm={12} md={12}>
                     <div class="mb-3 textarea_wrap">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </Col>
+                <Col sm={12} md={12}>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end regis_btn_wrap">
+                        <button class="btn btn-success me-md-2" type="button"
+                            onClick={()=>{ regis_click() }}
+                        >등록하기</button>
+                        <button class="btn btn-secondary" type="button"
+                            onClick={()=>{ back_page() }}
+                        >취소하기</button>
                     </div>
                 </Col>
             </Row>
