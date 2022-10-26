@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 
 const MatchRegisView = () => {
 
-    const { open_address, regis_click, back_page } = useClickEvent();
+    const { open_address } = useClickEvent();
     const { address_data } = useSelector(state => state.AddressReducer);
 
     return(
@@ -60,16 +60,6 @@ const MatchRegisView = () => {
                             <p>2</p>
                         </div>
                         <span>경기 전달사항을 입력해주세요.</span>
-                    </div>
-                </Col>
-                <Col sm={12} md={12}>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end regis_btn_wrap">
-                        <button class="btn btn-success me-md-2" type="button"
-                            onClick={()=>{ regis_click() }}
-                        >등록하기</button>
-                        <button class="btn btn-secondary" type="button"
-                            onClick={()=>{ back_page() }}
-                        >취소하기</button>
                     </div>
                 </Col>
             </Row>
