@@ -2,10 +2,6 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 const MatchRegisView = () => {
-
-    const { open_address } = useClickEvent();
-    const { address_data } = useSelector(state => state.AddressReducer);
-
     return(
         <>
             <Row>
