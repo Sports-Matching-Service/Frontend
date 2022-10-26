@@ -3,14 +3,11 @@ import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useClickEvent } from "../../customHooks/useClickHooks";
 import { useForm } from "react-hook-form";
-
-// =====================================================
-// [C] 로그인 모달 by huiwon
-// =====================================================
+import { RiKakaoTalkFill } from "react-icons/ri";
 
 const LoginModal = () => {
 
-    const { modal_state } = useSelector(state => state.ModalReducer);
+    const { modal_state } = useSelector(state => state.loginModalReducer);
     const { close_modal, move_page } = useClickEvent();
     const { register, handleSubmit, formState: { isSubmitting, isDirty, errors } } = useForm();
 

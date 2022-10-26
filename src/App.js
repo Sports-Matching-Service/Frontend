@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainRoute from "./route/MainRoute";
 import Footer from "./components/common/Footer";
 import LoginModal from "./components/common/LoginModal";
-import AddrModal from "./components/common/AddrModal";
 import SignUpRoute from "./route/SignUpRoute";
 import MatchRegisRoute from "./route/MatchRegisRoute";
 import MyPageRoute from "./route/MyPageRoute";
@@ -27,7 +26,6 @@ function App() {
       </Container>
       <Footer />
       <LoginModal />
-      <AddrModal />
     </BrowserRouter>
   );
 }
