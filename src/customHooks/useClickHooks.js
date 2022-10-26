@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { swal_class } from "../js/sweetAlert";
 import { set_login_modal, set_adress_modal } from "../redux/actions/modalAction";
+import { set_address_data } from "../redux/actions/dataAction";
 
 
 // =====================================================
@@ -48,7 +49,28 @@ export const useClickEvent = () => {
         }
     }
 
+    /** 다음 주소검색 패키지 */
+    const select_address = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = "";
+        
+        if (data.addressType === "R") {
+            if (data.bname !== "") {
+                extraAddress += data.bname;
+            }
+
+            if (data.buildingName !== "") {
+                extraAddress +=
+                extraAddress !== "" ? `, ${data.buildingName}` : data.buildingName;
+            }
+            fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
+        }
+        
+        dispatch(set_address_data(fullAddress));
+        close_address();
+    };
+
     
 
-    return { open_modal, close_modal, move_page, close_address, open_address, regis_click, back_page }
+    return { open_modal, close_modal, move_page, close_address, open_address, regis_click, back_page, select_address }
 }
