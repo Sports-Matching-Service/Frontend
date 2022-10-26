@@ -1,19 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { swal_class } from "../js/sweetAlert";
-=======
->>>>>>> parent of 5454b5b (2022-10-25 수정본)
 import { set_login_modal, set_adress_modal } from "../redux/actions/modalAction";
-=======
-import { set_login_modal } from "../redux/actions/modalAction";
->>>>>>> parent of d7d9a2a (2022-10-25 develop 업로드)
-=======
-import { set_login_modal } from "../redux/actions/modalAction";
->>>>>>> parent of d7d9a2a (2022-10-25 develop 업로드)
 
 
 // =====================================================
@@ -24,6 +13,7 @@ export const useClickEvent = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    let swal_run;
 
     const open_modal = () => {
         dispatch(set_login_modal(true));
@@ -33,13 +23,18 @@ export const useClickEvent = () => {
         dispatch(set_login_modal(false));
     }
 
+    const open_address = () => {
+        dispatch(set_adress_modal(true));
+    }
+
+    const close_address = () => {
+        dispatch(set_adress_modal(false));
+    }
+
     const move_page = (param) => {
         navigate(`/${param}`);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     const back_page = () => {
         navigate(-1);
     }
@@ -56,17 +51,4 @@ export const useClickEvent = () => {
     
 
     return { open_modal, close_modal, move_page, close_address, open_address, regis_click, back_page }
-=======
-    return { open_modal, close_modal, move_page }
->>>>>>> parent of d7d9a2a (2022-10-25 develop 업로드)
-=======
-    const on_post = (data) => {
-        console.log('진입');
-    }
-
-    return { open_modal, close_modal, move_page, close_address, open_address }
->>>>>>> parent of 5454b5b (2022-10-25 수정본)
-=======
-    return { open_modal, close_modal, move_page }
->>>>>>> parent of d7d9a2a (2022-10-25 develop 업로드)
 }
