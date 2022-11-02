@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect, useCallback } from "react";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
+import { useClickEvent } from "../../customHooks/useClickHooks";
 
 const MATCH_DATA = [
   [
@@ -425,6 +426,9 @@ function MatchList() {
 
   const [lastRef, lastInView] = useInView();
 
+  // by huiwon, 페이지 이동을 위한 이벤트 추가
+  const { move_page } = useClickEvent();
+
   // 서버에서 아이템을 가지고 오는 함수
   const getMatchList = useCallback(async () => {
     setLoading(true);
@@ -473,7 +477,7 @@ function MatchList() {
             <span>{match.number}</span>
           </ListIntroduce>
           <ListStatus>
-            <ListStatusBtn
+            <ListStatusBtn onClick={()=>{ move_page('detail') }}
               btncolor={
                 match.status === "모집 중"
                   ? 0

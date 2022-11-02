@@ -11,6 +11,7 @@ import SignUpRoute from "./route/SignUpRoute";
 import MatchRegisRoute from "./route/MatchRegisRoute";
 import MyPageRoute from "./route/MyPageRoute";
 import ReviewRoute from "./route/ReviewRoute";
+import DetailRoute from "./route/DetailRoute.jsx";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/matchregis" element={<MatchRegisRoute />} />
             <Route path="/mypage" element={<MyPageRoute />} />
             <Route path="/review" element={<ReviewRoute />} />
+            <Route path="/detail" element={<DetailRoute />} />
           </Routes>
         </div>
       </Container>
