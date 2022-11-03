@@ -92,5 +92,23 @@
                 }
             }
         }
+
+        h4 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .send_box {
+            display: flex;
+
+            label {
+                width: 33%;
+                padding-right: 20px;
+            }
+
+            label > p:nth-child(1){
+                font-weight: bold;
+            }
+        }
     }
 }

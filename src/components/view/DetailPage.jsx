@@ -5,6 +5,7 @@ import { GiSoccerBall } from 'react-icons/gi'
 import { GiHumanPyramid } from 'react-icons/gi'
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { VscPerson } from "react-icons/vsc";
+import Map from '../common/Map';
 
 const DetailPage = () => {
     return(
@@ -44,25 +45,27 @@ const DetailPage = () => {
                 <Col sm={12} md={9}>
                     <div className="send_wrap">
                         <h4>전달사항</h4>
-                        <label>
-                            <p>매치 규칙</p>
-                            <p>모든 파울은 사이드라인에서 킥인</p>
-                            <p>골키퍼에게 백패스 가능, 손으로 잡기는 불가능</p>
-                            <p>사람을 향한 태클 금지</p>
-                        </label>
-                        <label>
-                            <p>진행 방식</p>
-                            <p>축구화와 개인 음료만 준비해주세요.</p>
-                            <p>친구끼리와도 팀 실력이 맞지 않으면 다른 팀이 될 수 있어요.</p>
-                        </label>
-                        <label>
-                            <p>기타</p>
-                            <p>만나서 즐거운 게임해요.</p>
-                        </label>
+                        <div className="send_box">
+                            <label>
+                                <p>매치 규칙</p>
+                                <p>모든 파울은 사이드라인에서 킥인</p>
+                                <p>골키퍼에게 백패스 가능, 손으로 잡기는 불가능</p>
+                                <p>사람을 향한 태클 금지</p>
+                            </label>
+                            <label>
+                                <p>진행 방식</p>
+                                <p>축구화와 개인 음료만 준비해주세요.</p>
+                                <p>친구끼리와도 팀 실력이 맞지 않으면 다른 팀이 될 수 있어요.</p>
+                            </label>
+                            <label>
+                                <p>기타</p>
+                                <p>만나서 즐거운 게임해요.</p>
+                            </label>
+                        </div>
                     </div>
                 </Col>
                 <Col sm={12} md={8}>
-                    <div>지도 영역</div>
+                    <Map />
                 </Col>
             </Row>
         </>
