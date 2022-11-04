@@ -1,108 +1,134 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Row } from "react-bootstrap";
 import styled from "styled-components";
-import { FaUserAlt, FaDollarSign, FaLock } from "react-icons/fa";
+import { FaUserAlt, FaLock } from "react-icons/fa";
 import { BsFillStarFill } from "react-icons/bs";
-import { RiChatHistoryFill } from "react-icons/ri";
-import { MdRateReview } from "react-icons/md";
-import { ImExit } from "react-icons/im";
-import { AiFillQuestionCircle } from "react-icons/ai";
+import { MdRateReview, MdOutlineSportsKabaddi } from "react-icons/md";
+import { AiFillQuestionCircle, AiTwotoneCalendar } from "react-icons/ai";
 import { HiSpeakerphone } from "react-icons/hi";
+import { BiTimeFive } from "react-icons/bi";
+import { GrCircleInformation } from "react-icons/gr";
+import { myPageRender } from "../../js/myPageRender";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
+
+const LeftContainer = styled.div`
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+  margin: 30px 0 50px 0;
+`;
+
+const LeftContainerButton = styled.div`
+  box-shadow: 1px 1px 2px gray;
+
+  & div {
+    padding: 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  & div svg {
+    padding: 0 15px 0 0;
+    width: 25%;
+    height: 30px;
+  }
+`;
+
+const LeftContainerCommon = styled.div`
+  width: 100%;
+  box-shadow: 2px 2px 2px gray, 0px 0px 2px gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+
+  & h5 {
+    margin: 0 0 20px 20px;
+  }
+`;
+
+const MyContainer = styled(LeftContainerCommon)`
+  margin-bottom: 20px;
+
+  & ${LeftContainerButton}:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: none;
+  }
+
+  & ${LeftContainerButton}:nth-child(2) svg {
+    margin-bottom: 15px;
+    width: 50%;
+    height: 50px;
+  }
+
+  & ${LeftContainerButton}:nth-child(2) span {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  & ${LeftContainerButton}:nth-child(6) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & ${LeftContainerButton}:nth-child(6) > span {
+    margin: 0 0 10px 35px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+`;
+
+const ServiceContainer = styled(LeftContainerCommon)``;
+
+const RightContainer = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 25px;
+  margin-top: 30px;
+`;
 
 const MyCardContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin: 30px 0 40px 0;
+  margin-bottom: 35px;
 `;
 
 const MyCard = styled.div`
-  width: 30%;
-  height: 150px;
-  padding: 20px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
+  width: 27.5%;
+  height: 120px;
+  padding: 10px 25px;
+  box-shadow: 2px 2px 2px gray, 0px 0px 2px gray;
+  border-radius: 5px;
 
-  & svg {
-    width: 30%;
-    height: 110px;
+  & div:first-child {
+    font-size: 18px;
+    margin-bottom: 20px;
   }
-`;
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 110px;
-  width: 65%;
-`;
-
-const UserCard = styled(Card)`
-  & span {
-    text-align: right;
-  }
-  & span:nth-child(2) {
-    font-size: 14px;
-  }
-`;
-
-const StarCard = styled(Card)`
-  text-align: center;
-  & > span {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  & div {
-    display: flex;
-    justify-content: space-evenly;
-  }
-`;
-
-const MoneyCard = styled(Card)`
-  & div {
+  & div:last-child {
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
+    align-items: center;
+  }
+
+  & div:last-child svg {
+    width: 15%;
+    height: 50px;
+  }
+
+  & div:last-child span {
+    font-size: 26px;
   }
 `;
 
-const MyContainer = styled.div`
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin-bottom: 40px;
-
-  & h5 {
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-`;
-
-const MyItem = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  &:last-child {
-    margin-bottom: 10px;
-  }
-  & svg {
-    margin-right: 20px;
-    width: 35px;
-    height: 35px;
-  }
-  & span {
-    font-size: 18px;
-  }
-`;
+const MyRenderContainer = styled.div``;
 
 function MyPage() {
   // by 민형, User(이름, 이메일, 주소) | Review(별점, 리뷰 개수) | Money(잔액) 데이터 가져오기_221022
@@ -118,88 +144,96 @@ function MyPage() {
   //     axios.get(`API URL/money`)
   //   );
   //   const loading = userLoaindg || reviewLoaindg || moneyLoaindg;
+
+  const [page, setPage] = useState("신청");
+
   return (
     <>
       {/* by 민형, 위의 모든 데이터가 로딩이 끝났을 경우 내용을 렌더링_221022 */}
       {/* {!loading ? <div>Loading...</div> : <div>밑에 내용</div>} */}
       <Row className="filter_col_wrap">
-        <Col sm={12} md={12}>
-          <MyCardContainer>
-            <MyCard>
-              <FaUserAlt />
-              <UserCard>
-                <span>박민형</span>
-                <span>qkralswgud1324@naver.com</span>
-                <span>울산 광역시 동구</span>
-              </UserCard>
-            </MyCard>
-            <MyCard>
-              <BsFillStarFill />
-              <StarCard>
-                <span>4.9</span>
-                <div>
-                  <span>리뷰</span>
-                  <span>2,000</span>
-                </div>
-              </StarCard>
-            </MyCard>
-            <MyCard>
-              <FaDollarSign />
-              <MoneyCard>
-                <div>
-                  <span>보유 잔액</span>
-                  <span>100,000원</span>
-                </div>
-              </MoneyCard>
-            </MyCard>
-          </MyCardContainer>
-        </Col>
-        <Col sm={12} md={12}>
+        <LeftContainer>
           <MyContainer>
             <h5>나의 정보</h5>
-            <MyItem>
-              <RiChatHistoryFill />
-              <Link to="/">
-                <span>신청 내역</span>
-              </Link>
-            </MyItem>
-            <MyItem>
-              <FaLock />
-              <Link to="/">
-                <span>비밀 번호 변경</span>
-              </Link>
-            </MyItem>
-            <MyItem>
-              <MdRateReview />
-              <Link to="/">
-                <span>리뷰</span>
-              </Link>
-            </MyItem>
-            <MyItem>
-              <ImExit />
-              <Link to="/">
-                <span>로그아웃</span>
-              </Link>
-            </MyItem>
+            <LeftContainerButton>
+              <FaUserAlt />
+              <span>박민형</span>
+              <span>qkralswgud1324@naver.com</span>
+              <span>울산시 동구</span>
+            </LeftContainerButton>
+            <LeftContainerButton>
+              <div>
+                <BiTimeFive />
+                <span onClick={() => setPage("신청")}>신청 내역</span>
+              </div>
+            </LeftContainerButton>
+            <LeftContainerButton>
+              <div>
+                <GrCircleInformation />
+                <span onClick={() => setPage("내 정보")}>내 정보 변경</span>
+              </div>
+            </LeftContainerButton>
+            <LeftContainerButton>
+              <div>
+                <FaLock />
+                <span onClick={() => setPage("비밀번호")}>비밀번호 변경</span>
+              </div>
+            </LeftContainerButton>
+            <LeftContainerButton>
+              <div>
+                <MdRateReview />
+                <span onClick={() => setPage("리뷰")}>리뷰</span>
+              </div>
+              <span onClick={() => setPage("게스트")}>게스트 평가</span>
+              <span onClick={() => setPage("호스트")}>호스트 평가</span>
+              <span onClick={() => setPage("내 리뷰")}>내 리뷰 확인하기</span>
+            </LeftContainerButton>
           </MyContainer>
-        </Col>
-        <Col sm={12} md={12}>
-          <MyContainer>
+
+          <ServiceContainer>
             <h5>고객 센터</h5>
-            <MyItem>
-              <AiFillQuestionCircle />
-              <Link to="/">
-                <span>자주 묻는 질문</span>
-              </Link>
-            </MyItem>
-            <MyItem>
-              <HiSpeakerphone />
-              <Link to="/">
-                <span>공지사항</span>
-              </Link>
-            </MyItem>
-          </MyContainer>
-        </Col>
+            <LeftContainerButton>
+              <div>
+                <AiFillQuestionCircle />
+                <span onClick={() => setPage("질문")}>자주 묻는 질문</span>
+              </div>
+            </LeftContainerButton>
+            <LeftContainerButton>
+              <div>
+                <HiSpeakerphone />
+                <span onClick={() => setPage("공지사항")}>공지사항</span>
+              </div>
+            </LeftContainerButton>
+          </ServiceContainer>
+        </LeftContainer>
+
+        <RightContainer>
+          <MyCardContainer>
+            <MyCard>
+              <div>유저 점수</div>
+              <div>
+                <BsFillStarFill />
+                <span>4.5</span>
+              </div>
+            </MyCard>
+            <MyCard>
+              <div>참여한 매치</div>
+              <div>
+                <MdOutlineSportsKabaddi />
+                <span>10</span>
+              </div>
+            </MyCard>
+            <MyCard>
+              <div>내가 만든 매치</div>
+              <div>
+                <AiTwotoneCalendar />
+                <span>5</span>
+              </div>
+            </MyCard>
+          </MyCardContainer>
+
+          <MyRenderContainer>{myPageRender(page)}</MyRenderContainer>
+        </RightContainer>
       </Row>
     </>
   );

@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import styled from "styled-components";
-import { FaUserAlt } from "react-icons/fa";
-import { BsFillStarFill } from "react-icons/bs";
 import { calcTime } from "../../js/calcTime";
 import { divdePageGroup } from "../../js/divdePageGroup";
 import {
@@ -15,58 +13,6 @@ import {
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
-
-const MyCardContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin: 30px 0 40px 0;
-`;
-
-const MyCard = styled.div`
-  width: 30%;
-  height: 150px;
-  padding: 20px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
-
-  & svg {
-    width: 30%;
-    height: 110px;
-  }
-`;
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 110px;
-  width: 65%;
-`;
-
-const UserCard = styled(Card)`
-  & span {
-    text-align: right;
-  }
-  & span:nth-child(2) {
-    font-size: 14px;
-  }
-`;
-
-const StarCard = styled(Card)`
-  text-align: center;
-  & > span {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  & div {
-    display: flex;
-    justify-content: space-evenly;
-  }
-`;
 
 const ReviewContainers = styled.div`
   width: 100%;
@@ -96,7 +42,7 @@ const ReviewUser = styled.div`
 const ReviewContent = styled.div``;
 
 const PagingContainer = styled.div`
-  width: 40%;
+  width: 60%;
   margin: 70px auto;
   display: flex;
   justify-content: space-between;
@@ -456,17 +402,6 @@ const writerData = [
   ],
 ];
 
-const userData = {
-  name: "박민형",
-  email: "qkralswgud1324@naver.com",
-  position: "울산 광역시 동구",
-};
-
-const reviewData = {
-  score: 4.9,
-  count: 2000,
-};
-
 function Review() {
   // by 민형, User(이름, 이메일, 주소) | Review(별점, 리뷰 개수) | 작성자(이름, 주소, 댓글내용, 시간) 데이터 가져오기_221025
 
@@ -558,28 +493,6 @@ function Review() {
       {/* by 민형, 위의 모든 데이터가 로딩이 끝났을 경우 내용을 렌더링_221022 */}
       {/* {!loading ? <div>Loading...</div> : <div>밑에 내용</div>} */}
       <Row className="filter_col_wrap">
-        <Col sm={12} md={12}>
-          <MyCardContainer>
-            <MyCard>
-              <FaUserAlt />
-              <UserCard>
-                <span>{userData.name}</span>
-                <span>{userData.email}</span>
-                <span>{userData.position}</span>
-              </UserCard>
-            </MyCard>
-            <MyCard>
-              <BsFillStarFill />
-              <StarCard>
-                <span>{reviewData.score}</span>
-                <div>
-                  <span>리뷰</span>
-                  <span>{reviewData.count}</span>
-                </div>
-              </StarCard>
-            </MyCard>
-          </MyCardContainer>
-        </Col>
         <Col sm={12} md={12}>
           <ReviewContainers>
             {timeWirteData.map((item, idx) => (

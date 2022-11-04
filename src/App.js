@@ -13,6 +13,7 @@ import MyPageRoute from "./route/MyPageRoute";
 import ReviewRoute from "./route/ReviewRoute";
 import DetailRoute from "./route/DetailRoute.jsx";
 
+
 function App() {
   return (
     <BrowserRouter>
