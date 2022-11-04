@@ -10,7 +10,6 @@ import AddrModal from "./components/common/AddrModal";
 import SignUpRoute from "./route/SignUpRoute";
 import MatchRegisRoute from "./route/MatchRegisRoute";
 import MyPageRoute from "./route/MyPageRoute";
-import ReviewRoute from "./route/ReviewRoute";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
             <Route path="/signup" element={<SignUpRoute />} />
             <Route path="/matchregis" element={<MatchRegisRoute />} />
             <Route path="/mypage" element={<MyPageRoute />} />
-            <Route path="/review" element={<ReviewRoute />} />
           </Routes>
         </div>
       </Container>
