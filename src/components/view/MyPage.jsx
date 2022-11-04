@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row } from "react-bootstrap";
 import styled from "styled-components";
 import { FaUserAlt, FaLock } from "react-icons/fa";
@@ -8,17 +8,17 @@ import { AiFillQuestionCircle, AiTwotoneCalendar } from "react-icons/ai";
 import { HiSpeakerphone } from "react-icons/hi";
 import { BiTimeFive } from "react-icons/bi";
 import { GrCircleInformation } from "react-icons/gr";
+import { myPageRender } from "../../js/myPageRender";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
-import Review from "./Review";
 
 const LeftContainer = styled.div`
   width: 20%;
   display: flex;
   flex-direction: column;
   padding-right: 15px;
-  margin-top: 30px;
+  margin: 30px 0 50px 0;
 `;
 
 const LeftContainerButton = styled.div`
@@ -144,6 +144,9 @@ function MyPage() {
   //     axios.get(`API URL/money`)
   //   );
   //   const loading = userLoaindg || reviewLoaindg || moneyLoaindg;
+
+  const [page, setPage] = useState("신청");
+
   return (
     <>
       {/* by 민형, 위의 모든 데이터가 로딩이 끝났을 경우 내용을 렌더링_221022 */}
@@ -161,29 +164,29 @@ function MyPage() {
             <LeftContainerButton>
               <div>
                 <BiTimeFive />
-                <span>신청 내역</span>
+                <span onClick={() => setPage("신청")}>신청 내역</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
               <div>
                 <GrCircleInformation />
-                <span>내 정보 변경</span>
+                <span onClick={() => setPage("내 정보")}>내 정보 변경</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
               <div>
                 <FaLock />
-                <span>비밀번호 변경</span>
+                <span onClick={() => setPage("비밀번호")}>비밀번호 변경</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
               <div>
                 <MdRateReview />
-                <span>리뷰</span>
+                <span onClick={() => setPage("리뷰")}>리뷰</span>
               </div>
-              <span>게스트 평가</span>
-              <span>호스트 평가</span>
-              <span>내 리뷰 확인하기</span>
+              <span onClick={() => setPage("게스트")}>게스트 평가</span>
+              <span onClick={() => setPage("호스트")}>호스트 평가</span>
+              <span onClick={() => setPage("내 리뷰")}>내 리뷰 확인하기</span>
             </LeftContainerButton>
           </MyContainer>
 
@@ -192,13 +195,13 @@ function MyPage() {
             <LeftContainerButton>
               <div>
                 <AiFillQuestionCircle />
-                <span>자주 묻는 질문</span>
+                <span onClick={() => setPage("질문")}>자주 묻는 질문</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
               <div>
                 <HiSpeakerphone />
-                <span>공지사항</span>
+                <span onClick={() => setPage("공지사항")}>공지사항</span>
               </div>
             </LeftContainerButton>
           </ServiceContainer>
@@ -229,9 +232,7 @@ function MyPage() {
             </MyCard>
           </MyCardContainer>
 
-          <MyRenderContainer>
-            <Review />
-          </MyRenderContainer>
+          <MyRenderContainer>{myPageRender(page)}</MyRenderContainer>
         </RightContainer>
       </Row>
     </>
