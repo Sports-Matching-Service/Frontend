@@ -16,6 +16,7 @@ export const useClickEvent = () => {
     const navigate = useNavigate();
     let swal_run;
 
+    /** 모달 관련 함수 */
     const open_modal = () => {
         dispatch(set_login_modal(true));
     }
@@ -31,15 +32,19 @@ export const useClickEvent = () => {
     const close_address = () => {
         dispatch(set_adress_modal(false));
     }
+    
 
+    /** 페이지 이동 함수 */
     const move_page = (param) => {
         navigate(`/${param}`);
     }
 
+    /** 뒤로가기 함수 */
     const back_page = () => {
         navigate(-1);
     }
 
+    /** 경기등록 함수 */
     const regis_click = async() => {
         swal_run = new swal_class('info', '등록하시겠습니까?', '경기를 등록하시겠습니까?');
         const swal_result = await swal_run.confirm_alert();
@@ -49,11 +54,12 @@ export const useClickEvent = () => {
         }
     }
 
-    /** 다음 주소검색 패키지 */
+    /** 다음 주소검색 함수 */
     const select_address = (data) => {
+
         let fullAddress = data.address;
         let extraAddress = "";
-        
+
         if (data.addressType === "R") {
             if (data.bname !== "") {
                 extraAddress += data.bname;
@@ -68,9 +74,12 @@ export const useClickEvent = () => {
         
         dispatch(set_address_data(fullAddress));
         close_address();
-    };
+    }
 
-    
-
-    return { open_modal, close_modal, move_page, close_address, open_address, regis_click, back_page, select_address }
+    return { 
+        open_modal, close_modal, 
+        move_page, close_address, 
+        open_address, regis_click, 
+        back_page, select_address 
+    }
 }

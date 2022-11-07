@@ -15,7 +15,7 @@ const Carousel = () => {
   return (
     <Row className="carousel_row">
       <div className="temp_casousel_area"></div>
-      <Col md={9}>
+      <Col md={9} className="carousel_wrap">
         <Swiper autoplay={{ delay: 3000 }} loop={true}>
           <SwiperSlide>
             <div className="first_swiper">
