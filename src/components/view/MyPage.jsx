@@ -162,27 +162,27 @@ function MyPage() {
               <span>울산시 동구</span>
             </LeftContainerButton>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("신청")}>
                 <BiTimeFive />
-                <span onClick={() => setPage("신청")}>신청 내역</span>
+                <span>신청 내역</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("내 정보")}>
                 <GrCircleInformation />
-                <span onClick={() => setPage("내 정보")}>내 정보 변경</span>
+                <span>내 정보 변경</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("비밀번호")}>
                 <FaLock />
-                <span onClick={() => setPage("비밀번호")}>비밀번호 변경</span>
+                <span>비밀번호 변경</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("리뷰")}>
                 <MdRateReview />
-                <span onClick={() => setPage("리뷰")}>리뷰</span>
+                <span>리뷰</span>
               </div>
               <span onClick={() => setPage("게스트")}>게스트 평가</span>
               <span onClick={() => setPage("호스트")}>호스트 평가</span>
@@ -193,15 +193,15 @@ function MyPage() {
           <ServiceContainer>
             <h5>고객 센터</h5>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("질문")}>
                 <AiFillQuestionCircle />
-                <span onClick={() => setPage("질문")}>자주 묻는 질문</span>
+                <span>자주 묻는 질문</span>
               </div>
             </LeftContainerButton>
             <LeftContainerButton>
-              <div>
+              <div onClick={() => setPage("공지사항")}>
                 <HiSpeakerphone />
-                <span onClick={() => setPage("공지사항")}>공지사항</span>
+                <span>공지사항</span>
               </div>
             </LeftContainerButton>
           </ServiceContainer>
